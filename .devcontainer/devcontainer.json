@@ -1,0 +1,59 @@
+{
+  "devcontainer": {
+    "name": "May Learning System",
+    "image": "python:3.11",
+    "features": {
+      "ghcr.io/devcontainers/features/git:1": {},
+      "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+    "customizations": {
+      "vscode": {
+        "extensions": [
+          "ms-python.python",
+          "ms-python.pylint",
+          "ms-toolsai.jupyter"
+        ]
+      }
+    },
+    "postCreateCommand": "pip install -r requirements.txt",
+    "forwardPorts": [8000, 5000],
+    "remoteUser": "root"
+  },
+  "requirements": [
+    "aiohttp==3.9.1",
+    "beautifulsoup4==4.12.2",
+    "sqlite3",
+    "asyncio",
+    "fastapi==0.104.1",
+    "uvicorn==0.24.0",
+    "python-multipart==0.0.6",
+    "jinja2==3.1.2",
+    "python-dotenv==1.0.0"
+  ],
+  "structure": {
+    "may_project/": {
+      "core/": [
+        "may_learning_engine.py",
+        "memory_database.py", 
+        "safety_filters.py"
+      ],
+      "api/": [
+        "web_interface.py",
+        "learning_api.py"
+      ],
+      "config/": [
+        "trusted_sources.json",
+        "learning_topics.json",
+        "safety_config.json"
+      ],
+      "data/": [
+        "may_memory.db"
+      ],
+      "logs/": [],
+      "tests/": [
+        "test_learning.py",
+        "test_safety.py"
+      ]
+    }
+  }
+}
